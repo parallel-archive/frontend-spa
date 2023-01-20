@@ -1,0 +1,13 @@
+<svg
+   viewBox="0 0 20 20"
+   fill="currentColor"
+   version="1.1"
+   
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  
+  <path
+     id="path27"
+     style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke-width:0.847046;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;stop-color:#000000;stop-opacity:1"
+     d="M 5.9599818,3.7852138 A 0.80737293,0.88866807 0 0 0 5.3922977,4.0351517 L 0.5480601,9.3671606 a 0.80737293,0.88866807 0 0 0 0,1.2566324 l 4.8442376,5.332008 a 0.80737293,0.88866807 0 0 0 1.1416757,0 0.80737293,0.88866807 0 0 0 0,-1.256632 L 3.0679467,10.884145 h 4.5099347 4.8442376 4.509935 l -3.466027,3.815024 a 0.80737293,0.88866807 0 0 0 0,1.256632 0.80737293,0.88866807 0 0 0 1.141676,0 l 4.844237,-5.332008 a 0.80737293,0.88866807 0 0 0 0,-1.2566324 L 14.607703,4.0351517 a 0.80737293,0.88866807 0 0 0 -1.141676,1.2566321 l 3.466027,3.8150244 H 12.422119 7.5778814 3.0679467 L 6.5339734,5.2917838 a 0.80737293,0.88866807 0 0 0 -0.5739916,-1.50657 z" />
+</svg>

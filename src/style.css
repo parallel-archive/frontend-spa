@@ -1,0 +1,39 @@
+/* @font-face {
+    font-family: GT-Haptik;
+    src: url('/static/fonts/GT-Haptik-Regular.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: GT-Haptik;
+    src: url('/static/fonts/GT-Haptik-Bold.otf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: GT-Haptik;
+    src: url('/static/fonts/GT-Haptik-Thin.otf');
+    font-weight: 300;
+} */
+
+html, body {
+    font-family: Roboto, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin:0;
+    padding: 0;
+    height: 100%;
+    background-color: #e5e5e5;
+}
+
+
+
+body[data-overlay-open='data-overlay-open'] {
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    height: 100%;
+}

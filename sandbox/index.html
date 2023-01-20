@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="first-room"></div>
+    <div id="second-room"></div>
+    <div id="all-rooms"></div>
+    <script>
+        let activeFn
+
+        let watchMap = new Map()
+
+        function starting(fn) {
+            activeFn = fn
+        }
+
+        let rooms = new Proxy({
+            first: 'big',
+            second: 'small'
+        }, {
+            get(target, key, receiver) {
+                if (activeFn)
+                    if (!watchMap.has(key)) watchMap.set(key, new Set())
+                watchMap.get(key).add(activeFn)
+                return Reflect.get(...arguments)
+            },
+            set(target, key, receiver) {
+                if (!watchMap.has(key)) return
+                watchMap.get(key).forEach(fn => requestAnimationFrame(fn))
+                return Reflect.set(...arguments)
+            }
+        })
+
+
+        function wrap(fn) {
+            const wrapper = () => {
+                starting(wrapper)
+                fn(rooms)
+            }
+            return wrapper
+        }
+
+
+
+
+        const firstRoom = wrap((rooms) => {
+            document.getElementById('first-room').textContent = rooms.first
+        })
+
+        const secondRoom = wrap((rooms) => {
+            document.getElementById('second-room').textContent = rooms.second
+        })
+
+        const allRooms = wrap(rooms => {
+            document.getElementById('all-rooms').textContent = rooms.first + ' ' + rooms.second
+
+        })
+
+        firstRoom()
+        secondRoom()
+        allRooms()
+
+        console.log(rooms)
+
+
+    </script>
+</body>
+</html>

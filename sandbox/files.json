@@ -1,0 +1,54 @@
+{
+    "id": 0,
+    "images": {
+        "content": [
+            {
+                "id": 0,
+                "messages": [
+                    {
+                        "id": "PAGE",
+                        "message": "string",
+                        "scope": "ERROR"
+                    }
+                ],
+                "modifiedAt": "yyyy-MM-dd@HH:mm:ss.SSSZ",
+                "thumbnailUrl": "string",
+                "uploadedAt": "yyyy-MM-dd@HH:mm:ss.SSSZ",
+                "url": "string"
+            }
+        ],
+        "empty": true,
+        "first": true,
+        "last": true,
+        "number": 0,
+        "numberOfElements": 0,
+        "pageable": {
+            "offset": 0,
+            "pageNumber": 0,
+            "pageSize": 0,
+            "paged": true,
+            "sort": {
+                "empty": true,
+                "sorted": true,
+                "unsorted": true
+            },
+            "unpaged": true
+        },
+        "size": 0,
+        "sort": {
+            "empty": true,
+            "sorted": true,
+            "unsorted": true
+        },
+        "totalElements": 0,
+        "totalPages": 0
+    },
+    "messages": [
+        {
+            "id": "PAGE",
+            "message": "string",
+            "scope": "ERROR"
+        }
+    ],
+    "name": "string"
+}

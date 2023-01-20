@@ -1,0 +1,47 @@
+image: node:14
+
+pipelines:
+  branches:
+    develop:
+      - step:
+          name: 'Build codeandsoda osa-frontend-spa project'
+          caches:
+            - node
+          script:
+            - npm install
+            - npm run typecheck
+            - npm run build
+            - tar czvf osa-frontend-spa.tar.gz dist/
+          artifacts:
+            - osa-frontend-spa.tar.gz
+      - step:
+          name: 'Deploy codeandsoda osa-frontend-spa project'
+          deployment: staging
+          script:
+            - scp -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null osa-frontend-spa.tar.gz ubuntu@$OSA_EC2:/home/ubuntu
+            - ssh -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null ubuntu@$OSA_EC2 -t sudo rm -rf osa-frontend-spa/
+            - ssh -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null ubuntu@$OSA_EC2 -t sudo mkdir osa-frontend-spa/
+            - ssh -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null ubuntu@$OSA_EC2 -t sudo tar xzvf osa-frontend-spa.tar.gz -C osa-frontend-spa/
+    master:
+      - step:
+          name: 'Build codeandsoda osa-frontend-spa project'
+          caches:
+            - node
+          script:
+            - export PARENT_SITE_URL=$PARENT_SITE_URL_PROD
+            - export UMAMI_SITE_ID=$UMAMI_SITE_ID_PROD
+            - export UMAMI_SCRIPT_URL=$UMAMI_SCRIPT_URL_PROD
+            - npm install
+            - npm run typecheck
+            - npm run build
+            - tar czvf osa-frontend-spa.tar.gz dist/
+          artifacts:
+            - osa-frontend-spa.tar.gz
+      - step:
+          name: 'Deploy codeandsoda osa-frontend-spa project'
+          deployment: production
+          script:
+            - scp -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null osa-frontend-spa.tar.gz ubuntu@$OSA_EC2_PROD:/home/ubuntu
+            - ssh -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null ubuntu@$OSA_EC2_PROD -t sudo rm -rf osa-frontend-spa/
+            - ssh -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null ubuntu@$OSA_EC2_PROD -t sudo mkdir osa-frontend-spa/
+            - ssh -oStrictHostKeyChecking=no -oCheckHostIP=no -oUserKnownHostsFile=/dev/null ubuntu@$OSA_EC2_PROD -t sudo tar xzvf osa-frontend-spa.tar.gz -C osa-frontend-spa/
